@@ -12,7 +12,7 @@ def divide_features(df, crush_cols, threshold=5):
 
     feature_cols = set(df.columns) - set(crush_cols)
     
-    print("This dataset has {} columns \n has {} feature columns".format(len(df.cloumns), len(feature_cols)))
+    print("This dataset has {} columns \n has {} feature columns".format(len(df.columns), len(feature_cols)))
     
     for col in feature_cols:
         feat_unique_cnt = len(df[col].unique())
