@@ -26,4 +26,8 @@ def drop_feature_by_mvr(df_dataset, threshold = 0.9, inplace = True):
 def drop_samples_by_mvr(df_dataset, threshold = 0.9, inplace = True):
     mvr_by_row = df_dataset.isnull().mean(axis = 0)
     idx_drop = mvr_by_row.index[mvr_by_row > threshold]
-    return df_dataset.drop(idx_drop, axis=0, inplace = inplace)
+    if inplace:
+        df_dataset.drop(idx_drop, axis = 0, inplace = True)
+    else:
+        df_dataset = df_dataset.drop(idx_drop, axis = 0, inplace = True)
+    return df_dataset
