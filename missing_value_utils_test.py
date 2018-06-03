@@ -1,16 +1,10 @@
 import os
 import pandas as pd
 from missing_value_utils import drop_feature_by_mvr
+from data_utils import read_data_test
 
-def read_testdata():
-    rawdata_path = os.path.join("temp", "atec_anti_fraud_train_labeled.csv")
-    cache_path = os.path.join("temp", "cache.pkl")
-    if not os.path.exists(cache_path):
-        pd.read_csv(rawdata_path).to_pickle(cache_path)
-    return pd.read_pickle(cache_path)
-    
 def drop_feature_by_mvr_test():
-    df_dataset = read_testdata()
+    df_dataset = read_data_test()
     old_len = len(df_dataset.columns)
     ## test drop inplace
     df_dataset = drop_feature_by_mvr(df_dataset, threshold= 0.1)
